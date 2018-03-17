@@ -12,7 +12,7 @@ Python 3, Flask, SQLAlchemy, Pandas, pyyaml
 - This web app was created to work inside of a project for spawning Docker containers (hence the Dockerfile); however, that code will not be provided here either.
 
 ## Screenshots
-![Metis Login](Metis%20Screenshots/metis_login_confluence.png?raw=true)
-![Metis New User](Metis%20Screenshots/metis_new_user_confluence.png?raw=true)
-![Metis Classify](Metis%20Screenshots/metis_classify_example.png?raw=true)
-![Metis Logout](Metis%20Screenshots/metis_logout_confluence.png?raw=True)
+<img src="Metis%20Screenshots/metis_login_confluence.png?raw=true" align="left" width="300" alt="Metis Login">
+<img src="Metis%20Screenshots/metis_new_user_confluence.png?raw=true" align="center" width="300" alt="Metis New User">
+<img src="Metis%20Screenshots/metis_classify_example.png?raw=true" align="left" width="300" alt="Metis Classify">
+<img src="Metis%20Screenshots/metis_logout_confluence.png?raw=true" align="left" width="300" alt="Metis Logout">
