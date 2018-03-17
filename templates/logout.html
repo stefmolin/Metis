@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+  Logout
+{% endblock %}
+{% block content %}
+  <div class="content">
+    <img src="{{ url_for('static', filename='smile.png') }}">
+    <p>Thank you, <em>{{ username }}</em>, for helping Metis learn!<br>Check back soon for more classifications.<br><br><small>- The SCOPE Team<small></p>
+  </div>
+{% endblock %}
+{% block links %}
+  <a href="{{ url_for('show_faq') }}">FAQ</a>
+  |
+  {{ super() }}
+  | 
+  <a href="{{ url_for('login') }}">Login</a>
+{% endblock %}

@@ -1,0 +1,649 @@
+
+html{
+    background-color: #ffffff;
+    width: 600px;
+    margin: auto;
+    font-family: arial, sans-serif;
+}
+
+.primary-navigation{
+    background: white;   
+}
+.logo{
+    max-width: 145px;
+    margin: auto;
+    margin-left: 50px;
+}
+.logo img{
+    margin-left: 50%;
+    width: 60%;  
+}
+ /* label focus color */
+   .input-field input[type=text]:focus + label, .input-field input[type=email]:focus + label {
+     color: #FF8F1C !important;
+}
+/* label underline focus color */
+   .input-field input[type=text]:focus, .input-field input[type=email]:focus {
+     border-bottom: 1px solid #FF8F1C !important;
+     box-shadow: 0 1px 0 0 #FF8F1C !important;
+   }
+[type="radio"]:checked+label:before, [type="radio"]:checked+label:after{
+       background-color: #FF8F1C !important;
+    border: #FF8F1C !important;
+    
+}
+.btn{
+    display: block !important;
+}
+.btn, .btn-default {
+    padding: 9px 16px;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 16px;
+    min-width: 120px;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    font-weight: bold;
+    background-color: #d0e4f3;
+    color: #191f2b;
+    border-color: #d0e4f3;
+}
+}
+/* New stuff (Metis) */
+.login {
+  display: block;
+  text-align: center;
+}
+.heading, .login{ 
+  background-color: #30395e;
+  padding-bottom: 90px;
+}
+.heading {
+  text-align: center;
+  font-size: 18px;
+  font-family: arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: normal;
+  color: white;
+  margin: 0 auto;
+  padding: 50px 0 30px;
+}
+
+.heading h3 {
+  padding: 10px 0 0;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+} 
+
+.heading_sub {
+  font-size: 14px;
+  text-transform: none;
+  padding: 0;
+}
+.new_user {
+  width: 70%;
+  text-align: center;
+  margin: 0 auto;
+}
+.error {
+  color: #ffffff;
+  text-align: center;
+}
+.error p {
+  margin-left: 21px;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+.error p:before {
+    content: url('error_icon.png');
+    position: absolute;
+    margin-left: -21px;
+    margin-top: 3px;
+    opacity: 0.6;
+}
+.flashes {
+  text-align: center;
+}
+.metis_main, .content{
+  margin: 0 auto;
+  text-align: center;
+  background-color: #30395e;
+  color: white;
+  font-size: 14px;
+  padding-bottom: 50px;
+}
+.alert_main{
+  padding-bottom: 38px;
+}
+
+.content .graph_detail {
+  width: 80%;
+  font-size: 14px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #30395e;
+  color: white;
+  padding-top: 15px;
+}
+
+.header, .footer{
+  padding: 8px 15px; 
+  text-align: center;
+  background-color: #191e2b;
+  color: white;
+  /* background-color: #F7F7F7; */
+}
+.footer{
+  text-align: left;
+}
+
+.footer span{
+  display: block;
+  text-align: right;
+  margin-top: -22px;
+}
+
+.footer span a {
+  color: white;
+  font-family: arial;
+  text-decoration: none;
+  font-size:  12px;
+  /* background-color: #F7F7F7; */
+}
+
+img.footer_metis {
+  height: 15px;
+  display: block;
+}
+
+.content p{
+  display: block;
+  width: 70%;
+  font-size: 16px;
+  margin: 0 auto;
+  padding-top: 28px;
+}
+
+.content img {
+  padding-top: 90px;
+}
+
+.centered-content {
+  width: 30%; 
+  margin: 0 auto;
+}
+
+.help {
+  width: 100%;
+  margin; 0 auto;
+  text-align: center;
+  font-size: 11px;
+}
+.help_2 {
+  width: 100%;
+  margin; 0 auto;
+  text-align: right;
+  font-size: 11px;
+}
+
+
+.help img, .help_2 img  {
+  padding: 0;
+}
+.help p, .help_2 p {
+  font-size: 12px;
+  width: 90%;
+}
+
+#chart {
+  background-color: #30395e;
+  margin-right:20px;
+  margin-top: 20px;
+}
+
+.overlay {
+    height: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #d3d3d3;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.ft-form-item .form-box{
+  padding: 15px;
+  content: '';
+    display: block;
+    /*position: absolute;*/
+    bottom: 0;
+    left: 0;
+    border-top: 0;
+    width: 300px;
+    height: 100px;
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+
+form {
+  margin: 0;
+}
+/* --------- login page --------- */
+.login input {
+    width: 100%;
+    height: 36px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: arial;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login.classify {
+    padding-bottom: 50px;
+}
+
+.login input#username {
+    background: rgba(255,255,255,0.3) url('ic_person_white_24dp_2x_dk.png') 10px center no-repeat;
+    background-size: 24px 24px;
+    color: #30395e;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.login input#username:focus {
+    background: rgba(255,255,255,0.4) url('ic_person_white_24dp_2x.png') 10px center no-repeat;
+    background-size: 24px 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.login input::placeholder {
+  color: rgba(255,255,255,0.8);
+  color: #30395e;
+}
+
+.login input#password {
+    background: rgba(255,255,255,0.3) url('ic_lock_white_24dp_2x_bk.png') 10px center no-repeat;
+    background-size: 24px 24px;
+    color: #30395e;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.login input#password:focus {
+    background: rgba(255,255,255,0.4) url('ic_lock_white_24dp_2x.png') 10px center no-repeat;
+    background-size: 24px 24px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.login input:active, .login input:focus {
+    border: 1px solid #d0e4f2;
+}
+
+.login button, .forms button {
+    width: 100%;
+    height: 36px;
+    background: #4a6491;
+    background-color: rgba(74,100,154,0.6);
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid rgba(74,100,154,0.2);
+    color: #fff;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: arial;
+    outline: none;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+.login button:hover, .forms button:hover {
+    background: #4a6491;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid white;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media screen and (max-height: eight: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/* --------- Thank you scope email page --------- */
+
+.login p {
+  color: white;
+  text-align: center;
+  font-size: 13px;
+}
+
+
+/* --------- user page --------- */
+
+select {
+  margin: 0 0 30px 0;
+  border: 1px solid #111;
+  background: transparent;
+  width: 140px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid red
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('ic_arrows_white_24dp_2x.png') 96% / 15% no-repeat #eee;
+}
+
+select {
+    background-color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.2);
+    
+}
+select.teams {
+    color: #191e2b;
+}
+
+select:focus, select:active {
+    background-color: #6e748e;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+
+.forms P {
+  padding-top: 20px;
+}
+
+.options label {
+  margin-right: 15px;
+}
+/* --------- FAQ page ----------*/
+hr.hr_faq{
+  border-top: 1px dotted #ffffff;
+  border-bottom: none;
+  margin-top: 4px;
+}
+/* --------- classification overlay --------- */
+
+#helpOverlay {
+    background-color: #ffffff;
+    width: 615px;
+    margin: auto;
+    position: static;
+  }
+
+#helpOverlay .content img {
+  height: initial;
+  padding-bottom: 15px;
+  padding-top: 60px;
+}
+#helpOverlay .centered-content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+}
+/* ----- classification page ----- */
+.alert_or_not {
+  padding-top: 45px;
+  font-size: 16px;
+}
+
+.forms {
+  width: 40%;
+  margin: 0 auto;
+  /* border: solid 1px black;
+  background-color: white; */
+}
+.forms form input#true, .forms form input#false {
+    width:75px;
+    height:28px;
+    border: none;
+    color: transparent;
+    margin: 0 5px;
+}
+.forms form input#true {
+    background:url('metis_true.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.forms form input#false {
+    background:url('metis_false.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.forms form {
+  padding-top: 20px;
+}
+/*FAQ page */
+
+.who {
+  list-style: none;
+  -webkit-padding-start: 10px;
+}
+
+.who li{
+padding-bottom: 0.5em;
+}
+
+/* ------instraction-----*/
+.card .card-content {
+
+    border-bottom: 1px solid rgba(160,160,160,0.2);
+}
+
+.card .card-action.left{
+    position: relative;
+    background-color: inherit;
+    border: none;
+    padding: 16px 24px;
+    text-align: left;
+    display: inline-block;
+    width: 50%;
+    color: #85a5cc;
+}
+.card .card-action.right{
+    position: relative;
+    background-color: inherit;
+    border: none;
+    padding: 16px 24px;
+    text-align: right;
+    display: inline-block;
+    width: 50%;
+    color: #85a5cc;
+}
+/*.row .col.m7 {
+    width: 100%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}*/
+.card .card-content p {
+    margin: 0;
+    color: white;
+    text-align: left;
+    width: auto;
+}
+
+/*.container_instruction{
+    width: 85%;
+    margin: 0 auto;
+}*/
+
+.card {
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #30395e;
+}
+.card .card-image img {
+    display: block;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 0 0 ;
+}
+  .card a {
+    color: #85a5cc;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    color: #85a5cc;
+}
+.card .right a{
+    margin-right:0 !important;
+}
+
+/* FAQ page CSS */
+  body > header > section {
+    padding: 0 20px;
+    float: right;
+    text-align: right;
+    font-size: 120%;
+    line-height:1.5em;
+}
+              
+  body > header > section > label {
+    margin: 0 30px;
+}
+  body > section {
+    margin: 0 ;
+    text-align: left;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: #54585a;
+    overflow: hidden;
+    background-color: #30395e;
+    color: white;
+     padding-bottom: 20px;
+}
+/* Alert types */
+  body > section > header {
+    color: grey;
+    padding: 10px 30px;
+}
+/* Advertiser cards */
+.container_instruction, .row .col.s12, .row {
+  background-color: #30395e;
+}
+
+  body > section > section {
+    overflow: hidden;
+    background:rgba(255,255,255,0.3);
+    margin: 15px auto;
+    /*box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);*/
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0 10px 0 10px;
+    width: 80%;
+    border-radius: 3px;
+    font-size: 15px;
+  }
+  body > section > section > header {
+  font-weight: normal;
+  margin: 5px;
+  cursor: pointer;
+}
+/* Report cards */
+  body > section > section > section {
+    overflow: hidden;
+    font-size: 13px;
+    text-align: justify;
+    margin: 0;
+}
+  body > section > section > section p{
+    padding: 0 8px;
+    margin-bottom: 10px;
+}
+  body > section > section > section > ul {
+    list-style: none;
+}
+  body > section > section > section p a {
+    color: #85a5cc;
+    font-weight: bold;
+}
+  body > section > section > section p a:hover {
+    color: #4a6491;
+    font-weight: bold;
+    text-decoration: none;
+}
+/* URL */
+  body > section > section > section > section > section {
+    overflow: hidden;
+    display: flex;
+    background: white;
+    float: right;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 80%;
+}

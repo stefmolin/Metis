@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+  Login
+{% endblock %}
+{% block content %}
+  <h3 class="heading">Welcome</h3>
+    <div class="login">
+      {% if error %}
+      <div class="error"><p>{{ error }}</p></div>
+      {% endif %}
+      <div class="forms">
+        <form name="login" action="{{ url_for('login') }}" method="POST" autocomplete="on">
+          <div class="email-wrapper">
+            <input id="username" name="username" placeholder="username" required="" type="text"/>
+          </div>
+          <input id="password" name="password" placeholder="password" required="" type="password"/>
+          <button>Login</button>
+        </form>
+      </div>
+    </div>
+{% endblock %}
+{% block links %}
+  <a href="{{ url_for('show_faq') }}">FAQ</a>
+  |
+  {{ super() }}
+{% endblock %}

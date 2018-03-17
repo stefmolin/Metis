@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+{% block title %}
+  Instructions
+{% endblock %}
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='materialize.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Material_Icons.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='babel.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='react.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='react-dom.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='react.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.2.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='materialize.min.js') }}"></script>
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <h3 class="heading">How to Classify KPI Evolutions</h3>
+  <div class="content">
+        <div class="container_instruction">
+      <div id="row1" class="row">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <p>SCOPE needs your help learning what is an alert and what isn't. You will see a series of KPI evolutions and all you have to do is tell Metis whether or not the last (right-most) point is an alert. <b>You can assume that SCOPE will trigger an alert the <span style='text-decoration: underline;'>first day</span> of alert-worthy activity</b>; if things are returning to normal, you shouldn't keep getting the alerts. Easy, right?
+              </p>
+            </div>
+            <div class="card-action left">
+              {% if 'has_read_instructions' in session %}
+              <a href="{{ url_for('classify') }}">I remember</a>
+              {% endif %}
+            </div>
+            <div class="card-action right">
+              <a class="next_b" href="#">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="row2" class="row" style="display: none">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img class="metis_header" src="{{ url_for('static', filename='replacement_for_not_an_alert.png') }}" alt="Metis">
+            </div>
+            <div class="card-content">
+              <p><strong>Not an alert:</strong> The right-most (last) point is in line with what we would expect from prior performance.
+              </p>
+            </div>
+            <div class="card-action left">
+              <a class="previous_b" href="#">Previous</a>
+            </div>
+            <div class="card-action right">
+              <a class="next_b" href="#">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="row3" class="row" style="display: none">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img class="metis_header" src="{{ url_for('static', filename='replacement_not_a_positive_alert_caught_earlier_option_2.png') }}" alt="Metis">
+            </div>
+            <div class="card-content">
+              <p><strong>Not an alert:</strong> Although it is still higher than normal, we would have triggered an alert a few days before (the highest peak), so we don't want to trigger it now.
+              </p>
+            </div>
+            <div class="card-action left">
+              <a class="previous_b" href="#">Previous</a>
+            </div>
+            <div class="card-action right">
+              <a class="next_b" href="#">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="row4" class="row" style="display: none">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img class="metis_header" src="{{ url_for('static', filename='replacement_for_is_positive_alert.png') }}" alt="Metis">
+            </div>
+            <div class="card-content">
+              <p><strong>Alert:</strong> The last point is much higher than what we would expect given the KPI evolution.
+              </p>
+            </div>
+            <div class="card-action left">
+              <a class="previous_b" href="#">Previous</a>
+            </div>
+            <div class="card-action right">
+              <a class="next_b" href="#">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="row5" class="row" style="display: none">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img class="metis_header" src="{{ url_for('static', filename='replacement_for_not_a_negative_alert_option_1.png') }}" alt="Metis">
+            </div>
+            <div class="card-content">
+              <p><strong>Not an alert:</strong> Although it is still lower than normal, we would have triggered an alert a few days before (the lowest point), so we don't want to trigger it now.
+              </p>
+            </div>
+            <div class="card-action left">
+              <a class="previous_b" href="#">Previous</a>
+            </div>
+            <div class="card-action right">
+              <a class="next_b" href="#">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="row6" class="row" style="display: none">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-image">
+              <img class="metis_header" src="{{ url_for('static', filename='replacement_for_is_negative_alert_option_1.png') }}" alt="Metis">
+            </div>
+            <div class="card-content">
+              <p><strong>Alert:</strong> The last point is way lower than what we would expect given the KPI evolution.
+              </p>
+            </div>
+            <div class="card-action left">
+              <a class="previous_b" href="#">Previous</a>
+            </div>
+            <div class="card-action right">
+              <a href="{{ url_for('classify') }}">Classification</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <script>
+    // Your JavaScript and JSX here
+    var next_buttons = document.getElementsByClassName("next_b")
+    var previous_buttons = document.getElementsByClassName("previous_b")
+    for (var button of next_buttons) {
+      button.onclick = function(event) {
+        var card_action = event.target
+        var current_card = card_action.closest(".row")
+        var cards = document.getElementsByClassName('row')
+        var card_found = false
+        for (var card of cards){
+          if (card_found) { 
+            var next_card = card 
+            break
+          }
+          if (card == current_card) {
+            var card_found = true
+          }
+        }
+        current_card.style.display = 'none'
+        next_card.style.display = 'block'
+      }
+    }
+    for (var button of previous_buttons) {
+      button.onclick = function(event) {
+        var card_action = event.target
+        var current_card = card_action.closest(".row")
+        var cards = document.getElementsByClassName('row')
+        var card_found = false
+        for (var card of [...cards].reverse()){
+          if (card_found) { 
+            var previous_card = card 
+            break
+          }
+          if (card == current_card) {
+            var card_found = true
+          }
+        }
+        current_card.style.display = 'none'
+        previous_card.style.display = 'block'
+      }
+    }
+  </script>
+{% endblock %}
+{% block links %}
+  <a href="{{ url_for('show_faq') }}">FAQ</a>
+  |
+  {{ super() }}
+  |
+  <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

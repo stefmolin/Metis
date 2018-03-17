@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block title %}
+  FAQ
+{% endblock %}
+{% block head %}
+  {{ super() }}
+  <script>
+    function toggle_display(event){
+        var header = event.target
+        var section = header.nextElementSibling
+        if (section.style.display != "none"){
+            section.style.display = "none"
+        } else {
+            section.style.display = "block"
+        }
+    }
+    function main(){
+        var headers = document.getElementsByClassName("collapse_next_section")
+        for (i = 0; i < headers.length; i++) {
+            var section = headers[i].nextElementSibling
+            section.style.display = "none"
+            headers[i].addEventListener("click", toggle_display, false)
+        }
+    }
+    window.onload = main
+  </script>
+{% endblock %}
+{% block content %}
+  <section>
+    <section>
+      <header class="collapse_next_section">Why are we collecting this data?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>We want to build a supervised machine learning model for SCOPE to trigger alerts more like a human would rather than rule-based which is what we are limited to now since we don't have data to train the model on.  In order to make sure that we are triggering what our <em>users</em> call alerts, we need to get input from them!</p>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">What will we be doing with the results?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>Once we have built up a database of responses from SCOPE users, we will split the data into two sets: a training set and a test set (an uneven split). We will then use the training set to train possible machine learning models (think classification, random forests, clustering, etc.). Each of the models will then be tested on the test data (the unseen data). The model that performs best on the unseen data will be our new model! Of course, we will continue to tweak things from there (and collect more input from our users).</p>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">What does Metis mean?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>Since we are collecting this data to be smarter about how we trigger alerts, why not name it after a <b>Greek goddess of knowledge and deep thought</b>?!</p>
+        <div>From Wikipedia:</div>
+        <blockquote cite="https://en.wikipedia.org/wiki/Metis_(mythology)">Metis (&Mu;&#942;&tau;&iota;&sigmaf;, "wisdom," "skill," or "craft"), in ancient Greek religion, was a mythological character belonging to the Titan generation. [...] By the era of Greek philosophy in the 5th century BC, Metis had become the mother of wisdom and deep thought, [...] the embodiment of "prudence", "wisdom" or "wise counsel" [...] The Greek word metis meant a quality that combined wisdom and cunning.</blockquote>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">Who are we collecting responses from?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>Right now, we are collecting responses from AS, AX, and TS on what they would consider alerts. Each group is classifying a specific set of metrics; however, they are blind to who the advertiser is.</p>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">How can AS/AX/TS sign up to participate?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>No need to sign up--just <a href="{{ url_for('login') }}">login here</a> with your company credentials!</p>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">How can we report issues, provide feedback/comments, etc.?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>Click the "Report a Bug" link at the bottom of any page or <a href="https://yourcompany.slack.com/messages/bug_report_channel_id">click here</a>. If slack's not your thing, <a href="mailto:stefaniemolin@gmail.com?subject=Metis Bug">send an email</a>.</p>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">This is really cool! Can I see the code?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p>Code can be found on GitHub <a href="https://github.com/stefmolin/Metis">here</a>.</p>
+      </section>
+    </section>
+    <section>
+      <header class="collapse_next_section">Credits: Who built this?</header>
+      <section>
+        <hr style="width: 100%;">
+        <p><strong>Stefanie Molin</strong>: Flask webapp with Postgres database. (Python, HTML, CSS, JavaScript)</p>
+	    <p><strong>Francois Pillot</strong>: Moon deployment system used to spawn Docker containers off our Git repos, setting up the Flask server for multiple users, Flask tips and CSS/JavaScript from the SCOPE Digest collapsible email.</p>
+	    <p><strong>Maya Noguchi</strong>: Fixing up the UX to match the SCOPE emails.</p>
+	    <p><strong>Aliki Mavromoustaki</strong>: Base CSS, trying to make Dash happen, and Greek fact-checking.</p>
+      </section>
+    </section>
+    </section>
+{% endblock %}
+{% block links %}
+  {% if 'username' in session %}
+    <a href="{{ url_for('classify') }}">Classify</a>
+    |
+    {{ super() }}
+    |
+    <a href="{{ url_for('logout') }}">Logout</a>
+  {% else %}
+    {{ super() }}
+    |
+    <a href="{{ url_for('login') }}">Login</a>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}
+  Unsupported Team
+{% endblock %}
+{% block content %}
+  <div class="content">
+    <img src="{{ url_for('static', filename='error.png') }}">
+    <p>Sorry, <em>{{ username }}</em>, we love that you want to help Metis learn, but we don't have anything for {{ team }} to classify at the moment.<br><br><small>- The SCOPE Team<small></p>
+  </div>
+{% endblock %}
+{% block links %}
+  <a href="{{ url_for('show_faq') }}">FAQ</a>
+  |
+  {{ super() }}
+{% endblock %}

@@ -1,0 +1,4 @@
+host: "ip address for the machine with the DB on it"
+username: "postgres"
+password: "this is also a secret"
+port: 5432

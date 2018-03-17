@@ -1,0 +1,4 @@
+host: "postgresql"
+username: "postgres"
+password: "this-is-a-secret"
+port: 5432
