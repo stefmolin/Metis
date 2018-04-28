@@ -14,7 +14,7 @@ class ReverseProxied(object):
 
     In nginx:
     location /myprefix {
-        proxy_pass http://192.168.0.1:5001;
+        proxy_pass http://ip:port;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Scheme $scheme;
