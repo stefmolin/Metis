@@ -12,10 +12,18 @@ Python 3, Flask, SQLAlchemy, Pandas, pyyaml
 - This web app was created to work inside of a project for spawning Docker containers (hence the Dockerfile); however, that code will not be provided here either.
 
 ## Screenshots
-|Login|New User|
-| :---: | :---: |
-|<img src="Metis%20Screenshots/metis_login_confluence.png?raw=true" align="center" width="300" alt="Metis Login">|<img src="Metis%20Screenshots/metis_new_user_confluence.png?raw=true" align="center" width="300" alt="Metis New User">|
+|Login|New User|Instructions|
+| :---: | :---: | :---: |
+|<img src="Metis%20Screenshots/metis_login.png?raw=true" align="center" width="300" alt="Metis Login">|<img src="Metis%20Screenshots/metis_new_user.png?raw=true" align="center" width="300" alt="Metis New User">|<img src="Metis%20Screenshots/metis_instruction_still.png?raw=True" align="center" width="300" alt="Metis Instructions">
 
 |Classify KPI Evolution|Record Email Submission|Logout|
 | :---: | :---: | :---: |
-|<img src="Metis%20Screenshots/metis_classify_example.png?raw=true" align="center" width="300" alt="Metis Classify">|<img src="Metis%20Screenshots/metis_record_email_submission.png?raw=true" align="center" width="300" alt="Metis Accept Email Submission">|<img src="Metis%20Screenshots/metis_logout_confluence.png?raw=true" align="center" width="300" alt="Metis Logout">|
+|<img src="Metis%20Screenshots/metis_classification_page.png?raw=true" align="center" width="300" alt="Metis Classify">|<img src="Metis%20Screenshots/metis_email_submission.png?raw=true" align="center" width="300" alt="Metis Accept Email Submission">|<img src="Metis%20Screenshots/metis_logout.png?raw=true" align="center" width="300" alt="Metis Logout">|
+
+|Leaderboard (Logged In)|Leaderboard (Logged Out)|
+| :---: | :---: |
+|<img src="Metis%20Screenshots/metis_leaderboard.png?raw=true" align="center" width="300" alt="Metis Leaderboard when logged in">|<img src="Metis%20Screenshots/metis_leaderboard_not_logged_in.png?raw=true" align="center" width="300" alt="Metis Leaderboard when logged out">|
+
+|FAQ Cards|FAQ Cards Revealed|FAQ Before/After Reveal|
+| :---: | :---: | :---: |
+|<img src="Metis%20Screenshots/metis_faq_closed.png?raw=true" align="center" width="300" alt="Metis FAQ">|<img src="Metis%20Screenshots/metis_faq_expanded_blue_theme.png?raw=true" align="center" width="300" alt="Metis FAQ cards revealed.">|<img src="Metis%20Screenshots/metis_faq_before_after_blue_theme.png?raw=true" align="center" width="300" alt="Metis FAQ Before and After Reveal">|
