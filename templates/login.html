@@ -3,24 +3,32 @@
   Login
 {% endblock %}
 {% block content %}
-  <h3 class="heading">Welcome</h3>
-    <div class="login">
-      {% if error %}
-      <div class="error"><p>{{ error }}</p></div>
-      {% endif %}
-      <div class="forms">
-        <form name="login" action="{{ url_for('login') }}" method="POST" autocomplete="on">
-          <div class="email-wrapper">
-            <input id="username" name="username" placeholder="username" required="" type="text"/>
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card valign">
+      <div class="card-content white-text center">
+        <span class="card-title">Welcome</span>
+        <div class="login">
+          {% if error %}
+          <div class="error"><p>{{ error }}</p></div>
+          {% endif %}
+          <div class="row">
+            <form name="login" action="{{ url_for('login') }}" method="POST" autocomplete="on">
+              <input class="input-field col s6 offset-s3" id="username" name="username" placeholder="username" required="" type="text"/>
+              <input class="input-field col s6 offset-s3" id="password" name="password" placeholder="password" required="" type="password"/>
+              <button class="col s6 offset-s3" >Login</button>
+            </form>
           </div>
-          <input id="password" name="password" placeholder="password" required="" type="password"/>
-          <button>Login</button>
-        </form>
+        </div>
+        <br>
       </div>
     </div>
+  </div>
+</div>
 {% endblock %}
+
 {% block links %}
-  <a href="{{ url_for('show_faq') }}">FAQ</a>
-  |
+  <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
   {{ super() }}
+  <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
 {% endblock %}

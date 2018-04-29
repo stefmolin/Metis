@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block title %}
+  Leaderboard
+{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='Material_Icons.css')}}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col s5 offset-s1">
+    <div class="card large">
+      <div class="card-content white-text center">
+        <span class="card-title">Top Web App Contributors</span>
+      </div>
+      <div class="container white-text">
+        <table class="responsive-table centered">
+          <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Responses</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i, row in rankings[rankings.source == 'web_app'].head(5).iterrows()%}
+              <tr>
+                <td>{{ row['rank'] }}</td>
+                <td>{{ row['username'].lower() }}</td>
+                <td>{{ '{:,}'.format(row['responses']) }}</td>
+              </tr>
+            {% endfor %}
+          {% if 'username' in session and session.get('username').lower() not in rankings[rankings.source == 'web_app'].head(5).username.str.lower().tolist() %}
+            {% set df=rankings[rankings.source == 'web_app'] %}
+            {% set found=session.get('username').lower() in df.username.str.lower().tolist() %}
+            <tr>
+              <td>...</td>
+              <td>...</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>{{ '{:,}'.format(df[df.username.str.lower() == session.get('username').lower()]['rank'].iloc[0]) if found else 'N/A' }}</td>
+              <td>{{ session.get('username').lower() }}</td>
+              <td>{{ '{:,}'.format(df[df.username.str.lower() == session.get('username').lower()]['responses'].iloc[0]) if found else 0 }}</td>
+            </tr>
+          {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col s5">
+    <div class="card large">
+      <div class="card-content white-text center">
+        <span class="card-title">Top Email Contributors</span>
+      </div>
+      <div class="container white-text">
+        <table class="responsive-table centered">
+          <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Responses</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% set username_found = False %}
+            {% for i, row in rankings[rankings.source == 'email'].head(5).iterrows()%}
+              <tr>
+                <td>{{ row['rank'] }}</td>
+                <td>{{ row['username'] }}</td>
+                <td>{{ '{:,}'.format(row['responses']) }}</td>
+              </tr>
+            {% endfor %}
+          {% if 'username' in session and session.get('username').lower() not in rankings[rankings.source == 'email'].head(5).username.str.lower().tolist() %}
+            {% set df=rankings[rankings.source == 'email'] %}
+            {% set found=session.get('username').lower() in df.username.str.lower().tolist() %}
+            <tr>
+              <td>...</td>
+              <td>...</td>
+              <td>...</td>
+            </tr>
+            <tr>
+              <td>{{ '{:,}'.format(df[df.username.str.lower() == session.get('username').lower()]['rank'].iloc[0]) if found else 'N/A'}}</td>
+              <td>{{ session.get('username').lower() }}</td>
+              <td>{{ '{:,}'.format(df[df.username.str.lower() == session.get('username').lower()]['responses'].iloc[0]) if found else 0}}</td>
+            </tr>
+          {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block links %}
+  {% if 'username' in session %}
+    <li><a href="{{ url_for('classify') }}">Classify</a></li>
+    <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
+    {{ super() }}
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+    <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
+    {{ super() }}
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+  {% endif %}
+{% endblock %}

@@ -2,14 +2,23 @@
 {% block title %}
   Thank You
 {% endblock %}
+
 {% block content %}
-  <div class="content">
-    <img src="{{ url_for('static', filename='smile.png') }}">
-    <p> Thank you, <em>{{ username }}</em>, for helping Metis learn!<br><br>We have no more classifications for you at the moment, but please check back soon for more!<br><br><small>- The SCOPE Team<small></p>
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card valign">
+      <div class="card-content white-text center">
+        <img src="{{ url_for('static', filename='smile.png') }}">
+        <p>Thank you, <em>{{ username }}</em>, for helping Metis learn!<br>We have no more classifications for you at the moment, but please check back soon for more!<br><br><small>- The SCOPE Team<small></p>
+        <br>
+      </div>
+    </div>
   </div>
+</div>
 {% endblock %}
+
 {% block links %}
-  <a href="{{ url_for('show_faq') }}">FAQ</a>
-  |
+  <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
   {{ super() }}
+  <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
 {% endblock %}

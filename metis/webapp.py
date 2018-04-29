@@ -151,20 +151,29 @@ def show_faq():
     username = 'anonymous user'
   logger.info('{user} accessed the FAQ page'.format(user=username))
   return render_template('faq.html')
+  
+@app.route("/leaderboard")
+def leaderboard():
+  # allow leaderboard page to be accessed regardless of being logged in
+  if 'username' in session:
+    username = session['username']
+  else:
+    username = 'anonymous user'
+  logger.info('{user} accessed the leaderboard page'.format(user=username))
+  return render_template('leaderboard.html', rankings=metis_db.get_rankings())
 
 @app.route("/logout")
 @app.route("/logout/<int:switch_user>")
 def logout(switch_user=0):
   if 'username' in session:
     username = session['username']
+    clear_session()
     if switch_user:
       # if switching the user, clear the session and redirect to login page
-      clear_session()
       logger.info('{user} is switching logins'.format(user=username))
       return redirect(url_for('login'))
     else:
       # if not switching the user, clear the session if it exists
-      clear_session()
       logger.info('{user} logged out'.format(user=username))
       return render_template('logout.html', username=username)
   else:

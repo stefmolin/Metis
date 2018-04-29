@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     {% block head %}
     <title>Metis - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='materialize.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='reboot.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='metisstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='metis.css') }}">
     {% endblock %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='metis_favicon.ico') }}">
   </head>
   <body {% block onload_events %}{% endblock %}>
-    <div class="header">
-      <a href="https://github.com/stefmolin/Metis">
-        <img src="{{ url_for('static', filename='metis_logo_test.png') }}" alt="Metis">
-      </a>
-    </div>
+    <nav>
+      <div class="nav-wrapper darkest-background">
+        <a href="https://yourcompany.wiki.com/SCOPE/Metis+Web+App" class="brand-logo">
+          <img src="{{ url_for('static', filename='metis_logo_white.png') }}" alt="Metis">
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          {% block links %}
+            <li><a href="https://yourcompany.slack.com/messages/channel_id">Feedback</a></li>
+          {% endblock %}
+        </ul>
+      </div>
+    </nav>
     {% with messages = get_flashed_messages() %}
       {% if messages %}
         <ul class="flashes">
@@ -23,17 +32,20 @@
         </ul>
       {% endif %}
     {% endwith %}
-    {% block content %}
-    {% endblock %}
-    <div class="footer">
-        <img class="footer_metis" src="{{ url_for('static', filename='scope_logo_w.png') }}" alt="SCOPE">
-        <span>
-          {% block links %}
-          <a href="https://yourcompany.slack.com/messages/bug_report_channel_id">Report a bug</a>
-          {% endblock %}
-        </span>
-      {% block extra_footer %}
-      {% endblock %}
-    </div>
+    <main class="valign-wrapper">
+      <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </main>
+    <footer class="page-footer darkest-background">
+      <div class="footer center">
+        <div class="container">
+          <img src="{{ url_for('static', filename='scope_logo_w.png') }}" alt="SCOPE">
+        </div>
+      </div>
+    </footer>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="{{ url_for('static', filename='materialize.min.js') }}"></script>
   </body>
 </html>

@@ -11,154 +11,160 @@
   Classify
 {% endblock %}
 {% block content %}
-  
-  <!-- Classification Page -->
-  <div class="content" style="padding-bottom: 30px;">
-  <div class="alert_or_not">
-      Is <span style="color: #FF8F1C; font-weight: bold;" >X</span> an alert?
-  </div>
-    <div class="forms">
-    <form name="classification" action="{{ url_for('classify') }}" method="POST" style="text-align: center;">
-        <input type="submit" id="true" name="is_alert" value="True" required/>
-        <input type="submit" id="false" name="is_alert" value="False"/>
-      </form>
-    </div>
-    <!--- <div style="padding-top: 38px; font-size: 28px; text-transform: uppercase;" align="center">{{ kpi.replace("_", " ") }}</div> -->
-    <div style="text-align: center;">
-      <!-- line graph -->
-      <canvas id="chart" width="540" height="400" style="display: inline-block;"></canvas>
-      <script>
-        var date_list = {{ kpi_data['day'].tolist()|safe }};
-        var ctx = document.getElementById('chart').getContext('2d');
-        var myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            // x-axis
-            labels: date_list,
-            datasets: [{
-              data: {{ kpi_data['value'].tolist() }},
-              // line style
-              fill: false,
-              borderColor: "#FFFFFF",
-              borderWidth: 1.25,
-              // point style
-              pointRadius: {{ [0]*(kpi_data.shape[0] - 1) + [10] }},
-              pointStyle: "crossRot",
-              pointBorderWidth: 5,
-              pointBorderColor: "#FF8F1C" // change the color of the X
-            }]
-          },
-          options: {
-            events: [], // don't listen to any events
-            legend: {
-              display: false // don't show legend since it is just 1 series
-            },
-            tooltips: {
-              enabled: false // don't show tooltips bc they are not needed
-            }, 
-            scales: { // don't show x or y axis
-              xAxes: [{
-                display: true,
-                gridLines: {
-                  display: true,
-                  color: "rgba(255, 255, 255, 1)",
-                  drawOnChartArea: false,
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card valign">
+      <div class="card-content white-text center">
+        <!-- Classification Page -->
+        <div class="content" style="padding-bottom: 30px;">
+        <div class="alert_or_not">
+            Is <span style="color: #FF8F1C; font-weight: bold;" >X</span> an alert?
+        </div>
+          <div class="forms">
+            <form name="classification" action="{{ url_for('classify') }}" method="POST" style="text-align: center;">
+              <input type="submit" id="true" name="is_alert" value="True" required/>
+              <input type="submit" id="false" name="is_alert" value="False"/>
+            </form>
+          </div>
+          <!--- <div style="padding-top: 38px; font-size: 28px; text-transform: uppercase;" align="center">{{ kpi.replace("_", " ") }}</div> -->
+          <div class="card-image center">
+            <!-- line graph -->
+            <canvas id="chart"></canvas>
+            <script>
+              var date_list = {{ kpi_data['day'].tolist()|safe }};
+              var ctx = document.getElementById('chart').getContext('2d');
+              var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                  // x-axis
+                  labels: date_list,
+                  datasets: [{
+                    data: {{ kpi_data['value'].tolist() }},
+                    // line style
+                    fill: false,
+                    borderColor: "#FFFFFF",
+                    borderWidth: 1.25,
+                    // point style
+                    pointRadius: {{ [0]*(kpi_data.shape[0] - 1) + [10] }},
+                    pointStyle: "crossRot",
+                    pointBorderWidth: 5,
+                    pointBorderColor: "#FF8F1C" // change the color of the X
+                  }]
                 },
-                ticks: {
-                  maxRotation: 0,
-                  fontColor: "#FFFFFF", // white labels
-                  autoSkip: false,
-                  callback: function(value, index){ //value is the first argument used with this function index is second; can't change
-                    var x_axis_ticks = [];
-                    x_axis_ticks = filterDates(date_list);
-                    if(x_axis_ticks[index] == ""){
-                      var entry;
-                      entry = null;
-                    } else{
-                      entry = moment(x_axis_ticks[index], "YYYY-MM-DD").format('dd, MMM D');
-                    }
-                    return entry;
-                  }
-                }
-              }],
-              yAxes: [{
-                display: true,
-                afterFit: function(scale) {
-                  scale.width = 60  //<-- set value as you wish 
-                },
-                scaleLabel: {
-                  display: true,
-                  labelString: '{{ kpi.upper().replace("_", " ") }}',
-                  fontColor: '#ffffff',
-                  fontSize: 16, 
-                },
-                ticks: {
-                  fontColor: "#FFFFFF", // white labels
-                  suggestedMin: 0, // minimum will be 0, unless there is a lower value.
-                  callback: function(label, index, labels) {
-                    if(index % 2 == 0){ // write the label for every other gridline
-                      if(['cos', 'ctr', 'cr', 'margin'].includes('{{ kpi }}'.toLowerCase())){
-                        // percentages
-                        format_string = '0,0.[00]a%';
-                      } else if('{{ kpi }}'.includes('spend') || '{{ kpi }}'.includes('rext') || '{{ kpi }}'.includes('tac') || '{{ kpi }}'.includes('order_value')){
-                        // currency, show decimals
-                        format_string = '0,0.[00]a';
-                      } 
-                      else{
-                        // site events alerts, no decimals
-                        format_string = '0,0a';
+                options: {
+                  events: [], // don't listen to any events
+                  legend: {
+                    display: false // don't show legend since it is just 1 series
+                  },
+                  tooltips: {
+                    enabled: false // don't show tooltips bc they are not needed
+                  },
+                  scales: { // don't show x or y axis
+                    xAxes: [{
+                      display: true,
+                      gridLines: {
+                        display: true,
+                        color: "rgba(255, 255, 255, 1)",
+                        drawOnChartArea: false,
+                      },
+                      ticks: {
+                        maxRotation: 0,
+                        fontColor: "#FFFFFF", // white labels
+                        autoSkip: false,
+                        callback: function(value, index){ //value is the first argument used with this function index is second; can't change
+                          var x_axis_ticks = [];
+                          x_axis_ticks = filterDates(date_list);
+                          if(x_axis_ticks[index] == ""){
+                            var entry;
+                            entry = null;
+                          } else{
+                            entry = moment(x_axis_ticks[index], "YYYY-MM-DD").format('dd, MMM D');
+                          }
+                          return entry;
+                        }
                       }
-                      return numeral(label).format(format_string);
-                    } else{
-                      return "";
+                    }],
+                    yAxes: [{
+                      display: true,
+                      afterFit: function(scale) {
+                        scale.width = 60  //<-- set value as you wish
+                      },
+                      scaleLabel: {
+                        display: true,
+                        labelString: '{{ kpi.upper().replace("_", " ") }}',
+                        fontColor: '#ffffff',
+                        fontSize: 16,
+                      },
+                      ticks: {
+                        fontColor: "#FFFFFF", // white labels
+                        suggestedMin: 0, // minimum will be 0, unless there is a lower value.
+                        callback: function(label, index, labels) {
+                          if(index % 2 == 0){ // write the label for every other gridline
+                            if(['cos', 'ctr', 'cr', 'margin'].includes('{{ kpi }}'.toLowerCase())){
+                              // percentages
+                              format_string = '0,0.[00]a%';
+                            } else if('{{ kpi }}'.includes('spend') || '{{ kpi }}'.includes('rext') || '{{ kpi }}'.includes('tac') || '{{ kpi }}'.includes('order_value')){
+                              // currency, show decimals
+                              format_string = '0,0.[00]a';
+                            }
+                            else{
+                              // site events alerts, no decimals
+                              format_string = '0,0a';
+                            }
+                            return numeral(label).format(format_string);
+                          } else{
+                            return "";
+                          }
+                        }
+                      },
+                      gridLines: {
+                        display: true,
+                        drawBorder: false,
+                        color: "rgba(255, 255, 255, 1)", // color for the horizontal grid lines
+                        lineWidth: 0.25,
+                        tickMarkLength: 5, // how far the gridlines extend into the y-axis; they push the labels further left
+                        zeroLineColor: "rgba(255, 255, 255, 0.3)",  // color the horizontal grid line at y = 0 (black default)
+                      }
+                    }]
+                  },
+                  layout: {
+                    // add padding so the red x on the last point doesn't get cut off
+                    padding: {
+                        left: 20,
+                        right: 40,
+                        top: 40,
+                        bottom: 0
                     }
-                  }
-                },
-                gridLines: {
-                  display: true,
-                  drawBorder: false,
-                  color: "rgba(255, 255, 255, 1)", // color for the horizontal grid lines
-                  lineWidth: 0.25,
-                  tickMarkLength: 5, // how far the gridlines extend into the y-axis; they push the labels further left
-                  zeroLineColor: "rgba(255, 255, 255, 0.3)",  // color the horizontal grid line at y = 0 (black default)
+                  },
+                  responsive: true,
+                  // to load quickly, remove animations:
+                  animation: {
+                    duration: 0, // general animation time
+                  },
+                  hover: {
+                      animationDuration: 0, // duration of animations when hovering an item
+                  },
+                  responsiveAnimationDuration: 0, // animation duration after a resize
+                  elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
                 }
-              }]
-            },
-            layout: {
-              // add padding so the red x on the last point doesn't get cut off
-              padding: {
-                  left: 20,
-                  right: 40,
-                  top: 20,
-                  bottom: 20
               }
-            },
-            responsive: true, // static size
-            // to load quickly, remove animations:
-            animation: {
-              duration: 0, // general animation time
-            },
-            hover: {
-                animationDuration: 0, // duration of animations when hovering an item
-            },
-            responsiveAnimationDuration: 0, // animation duration after a resize
-            elements: {
-              line: {
-                  tension: 0, // disables bezier curves
-              }
-          }
-        }
-      });
-      </script>
+            });
+            </script>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
 {% endblock %}
 {% block links %}
-  <a href="{{ url_for('intro') }}">Instructions</a>
-  |
-  <a href="{{ url_for('show_faq') }}">FAQ</a>
-  |
+  <li><a href="{{ url_for('intro') }}">Instructions</a></li>
+  <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
   {{ super() }}
-  | 
-  <a href="{{ url_for('logout') }}">Logout</a>
+  <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
+  <li><a href="{{ url_for('logout') }}">Logout</a></li>
 {% endblock %}

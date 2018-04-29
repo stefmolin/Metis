@@ -3,41 +3,48 @@
   New User
 {% endblock %}
 {% block content %}
-  <div class="heading">
-    welcome!
-      <p class="heading_sub">You're new around here </p>
-    </div>
-    <div class="metis_main">
-      <div class="new_user">
-        Please provide your team and region, so we can show you relevant KPI evolutions for classifications.
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card valign">
+      <div class="card-content white-text center">
+        <div class="card-title">
+          You're new around here!
+        </div>
+        <div class="forms">
+            <p>Please provide your team and region, so we can show you relevant KPI evolutions for classifications.</p>
+          <form name="new_user" action="{{ url_for('new_user') }}" method="POST">
+                <P> I am a(n): </P>
+                  <div class="options">
+                    <input name="team" value="AS" required="" type="radio" id="as" class="hide" checked>
+                    <label for="as">AS</label>
+                    <input name="team" value="AX" type="radio" id="ax" class="hide">
+                    <label for="ax">AX</label>
+                    <input name="team" value="CS" type="radio" id="cs" class="hide">
+                    <label for="cs">CS</label>
+                    <input name="team" value="TS" type="radio" id="ts" class="hide">
+                    <label for="ts">TS</label>
+                  </div>
+                <P> in: </P>
+                <select class="teams" name="region" required="">
+                  <option value="" disabled selected>Select team...</option>
+                  <option value="AMERICAS">Americas</option>
+                  <option value="EMEA">EMEA</option>
+                  <option value="APAC">APAC</option>
+                </select>
+                <div class="card-action">
+                  <button>Submit</button>
+                </div>
+            </form>
+        </div>
+        <br>
       </div>
-      <div class="forms">
-        <form name="new_user" action="{{ url_for('new_user') }}" method="POST">
-            <P> I am a(n): </P>
-              <div class="options">
-                <input name="team" value="AS" required="" type="radio" id="as" class="hide" checked>
-                <label for="as">AS</label>
-                <input name="team" value="AX" type="radio" id="ax" class="hide">
-                <label for="ax">AX</label>
-                <input name="team" value="CS" type="radio" id="cs" class="hide">
-                <label for="cs">CS</label>
-                <input name="team" value="TS" type="radio" id="ts" class="hide">
-                <label for="ts">TS</label>
-              </div>
-            <P> in: </P>
-            <select class="teams" name="region" required="">
-              <option value="" disabled selected>Select team...</option>
-              <option value="AMERICAS">Americas</option>
-              <option value="EMEA">EMEA</option>
-              <option value="APAC">APAC</option>
-            </select>
-          <button>Submit</button>
-      </form>
     </div>
   </div>
+</div>
 {% endblock %}
+
 {% block links %}
-  <a href="{{ url_for('show_faq') }}">FAQ</a>
-  |
+  <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
   {{ super() }}
+  <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
 {% endblock %}

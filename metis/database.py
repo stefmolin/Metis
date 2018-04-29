@@ -342,6 +342,22 @@ class MetisDatabase(object):
             team = team[0]
         return team
 
+    def get_rankings(self):
+        subquery = self.session.query(models.Logs.source,
+                                      models.Logs.username,
+                                      func.count(models.Logs.username).label('responses'))\
+                                      .group_by(models.Logs.source, models.Logs.username)\
+                                      .subquery()
+        query = self.query_all(self.session.query(subquery.c.source,
+                                   func.rank().over(order_by=subquery.c.responses.desc(),
+                                                    partition_by=subquery.c.source)\
+                                                    .label('rank'),
+                                   subquery.c.username,
+                                   subquery.c.responses)\
+                                   .order_by(subquery.c.source, 'rank', subquery.c.username))
+
+        return pandas.DataFrame.from_records(query, columns=['source', 'rank', 'username', 'responses'])
+
     def test_connection(self):
         '''Make sure the DB connection is live'''
         self.session.query(models.User.team).first()

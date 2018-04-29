@@ -2,22 +2,35 @@
 {% block title %}
   Email Submission
 {% endblock %}
+
 {% block content %}
-    <div class="heading">
-      <img src="{{ url_for('static', filename='smile.png') }}">
-      <h3>Thank you</br>for your submission!</h3>
-    </div>
-    <div class="login classify">
-    <p> We will use your feedback to make smarter alerts. </p>
-      <div class="forms">
-        <form name="Classify" action="{{ url_for('login') }}" method="GET" autocomplete="on">
-          <button>Classify More</button>
-        </form>
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card valign">
+      <div class="card-content white-text center">
+        <div class="card-title">
+          <img src="{{ url_for('static', filename='smile.png') }}">
+          <h5>Thank you</br>for your submission!</h5>
+        </div>
+        <div class="login classify">
+        <p> We will use your feedback to make smarter alerts. </p>
+        <br>
+          <div class="forms">
+            <form name="Classify" action="{{ url_for('login') }}" method="GET" autocomplete="on">
+              <div class="card-action">
+                <button>Classify More</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 {% endblock %}
+
 {% block links %}
-  <a href="{{ url_for('show_faq') }}">FAQ</a>
-  |
+  <li><a href="{{ url_for('show_faq') }}">FAQ</a></li>
   {{ super() }}
+  <li><a href="{{ url_for('leaderboard') }}">Leaderboard</a></li>
 {% endblock %}

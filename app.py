@@ -9,7 +9,7 @@ Base = declarative_base() # this needs to be here (can't move)
 
 from flask import Flask
 app = Flask(__name__)
-app.secret_key = 'Esto es un secreto'
+app.secret_key = 'This is a secret'
 
 # Logging configuration
 FORMAT = '[%(levelname)s] [ %(name)s ] %(message)s'
