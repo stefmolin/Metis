@@ -14,7 +14,7 @@ Python 3, Flask, SQLAlchemy, Pandas, pyyaml
 ## Screenshots
 |Login|New User|Instructions|
 | :---: | :---: | :---: |
-|<img src="Metis%20Screenshots/metis_login.png?raw=true" align="center" width="300" alt="Metis Login">|<img src="Metis%20Screenshots/metis_new_user.png?raw=true" align="center" width="300" alt="Metis New User">|<img src="Metis%20Screenshots/metis_instruction_still.png?raw=True" align="center" width="300" alt="Metis Instructions">
+|<img src="Metis%20Screenshots/metis_login.png?raw=true" align="center" width="300" alt="Metis Login">|<img src="Metis%20Screenshots/metis_new_user.png?raw=true" align="center" width="300" alt="Metis New User">|<img src="Metis%20Screenshots/metis_instructions_still.png?raw=True" align="center" width="300" alt="Metis Instructions">
 
 |Classify KPI Evolution|Record Email Submission|Logout|
 | :---: | :---: | :---: |
