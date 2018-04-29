@@ -31,3 +31,8 @@ Python 3, Flask, SQLAlchemy, Pandas, pyyaml
 |FAQ Cards|FAQ Cards Revealed|
 | :---: | :---: |
 |<img src="Metis%20Screenshots/metis_faq_closed.png?raw=true" align="center" width="450" alt="Metis FAQ">|<img src="Metis%20Screenshots/metis_faq_expanded_blue_theme.png?raw=true" align="center" width="450" alt="Metis FAQ cards revealed.">
+
+
+## Related Projects:
+- [Case Study](https://github.com/stefmolin/SCOPE-Anomaly-Detection-Case-Study)
+- [SCOPE Alerts](https://github.com/stefmolin/SCOPE-anomaly-detection-emails/blob/master/README.md)
