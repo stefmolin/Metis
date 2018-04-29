@@ -1,7 +1,7 @@
 import requests
 
 def is_valid_user(login, password):
-  if not login or login == '' or not password or password == '':
+  if not login or not password:
     # if the login/password wasn't entered, return false
     return False
   else:

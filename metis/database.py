@@ -25,15 +25,12 @@ class MetisDatabase(object):
           TS_index_generator: Generator of indices of KPI evolutions to show to TS
       """
 
-    def __init__(self, db_uri, base, directory_dict, schema='alerts'):
+    def __init__(self, db_uri, base):
         """Return a MetisDatabase object using the provided database.
 
         Arguments:
           db_uri:   URI for the database
           base:     SQLAlchemy declarative base
-          directory_dict: Dictionary with table names (without schema) as keys and the directory of the
-                          data files to write to the table as values
-          schema:   The schema to create the tables supplied by in the dictionary_dict argument
         """
         self.schema = schema
         self.engine = create_engine(db_uri, echo=False, poolclass=NullPool)

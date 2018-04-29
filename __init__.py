@@ -40,9 +40,7 @@ from metis.database import MetisDatabase
 # needs to be declared outside the if __name__ == '__main__'
 metis_db = MetisDatabase(db_uri="postgresql://{user}:{password}@{db}:{db_port}".\
   format(user=db_username, password=db_password, db=db_host, db_port=db_port), \
-  base=Base, schema='alerts', \
-  directory_dict={'kpi_evolutions' : 'data/kpi_evolutions', \
-  'classification_logs' : 'data/classification_logs', 'users' : 'data/users'})
+  base=Base)
 
 from metis import webapp # needs to be after the MetisDatabase stuff
 
